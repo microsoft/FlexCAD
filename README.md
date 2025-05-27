@@ -1,7 +1,9 @@
 # FlexCAD
-**[ICLR 2025] FlexCAD: Unified and Versatile Controllable CAD Generation with Fine-tuned Large Language Models** [[arXiv](https://arxiv.org/abs/2411.05823)] by *Zhanwei Zhang*, *Shizhao Sun*, *Wenxiao Wang*, *Deng Cai*, *Jiang Bian* aims at achieving controllable CAD generation across all CAD construction hierarchies.
+**[ICLR 2025] FlexCAD: Unified and Versatile Controllable CAD Generation with Fine-tuned Large Language Models** by *Zhanwei Zhang*, *Shizhao Sun*, *Wenxiao Wang*, *Deng Cai*, *Jiang Bian*.
 
-It takes an original CAD model along with the part the user intends to modify (highlighted in blude) as input, and generates multiple new CAD models with only the chosen part changed.
+[[Paper](https://arxiv.org/abs/2411.05823)][[Hugging Face](https://huggingface.co/microsoft/FlexCAD)]
+
+FlexCAD aims at achieving controllable CAD generation across all CAD construction hierarchies. It takes an original CAD model along with the part the user intends to modify (highlighted in blude) as input, and generates multiple new CAD models with only the chosen part changed.
 
 ![result](./assets/fig1.png)
 
@@ -52,7 +54,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch --config_file ds_config.yaml fine
 CUDA_VISIBLE_DEVICES=<gpu_id> python3 finetune.py --run-name <run_name> --data-path <data_path> --eval-freq 200000 --save-freq 20000 --model_name <model_name>
 ```
 ## Inference
-We provide the model weights for FlexCAD in the ```checkpoints``` folder when setting ```MAX_LENGTH = 512```. You can download them to ```<model_path>``` for inference.
+Download our trained model weights for FlexCAD from [Hugging Face](https://huggingface.co/microsoft/FlexCAD).
 - For conditional generation, run inference with
   (mask_type: [```unconditional```, ```cad```, sketch-extrusion(```es```), ```extrusion```, ```sketch```, ```face```, ```loop```, ```curve```]. When selecting 'curve', you can enable ```use_fixed_demo``` to customize the type and number of curves to generate as desired.)
 ```
